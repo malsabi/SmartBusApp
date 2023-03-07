@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SmartBusApp",
-    "slug": "SmartBusApp",
+    "slug": "smart-bus-platform-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "20452f46-4784-474a-b2a6-2bdc5cfeb69a"
+      }
+    },
+    "owner": "malsabi"
   }
 }
