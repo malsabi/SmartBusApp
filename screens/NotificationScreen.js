@@ -35,7 +35,7 @@ export default function NotificationScreen()
                             <View style={ styles.noteCont }>
                                 <Text style={ styles.title }>{ item.title }</Text>
                                 <Text style={ styles.messageText }>{ item.message }</Text>
-                                <Text style={ styles.dateText } >{ item.dae }</Text>
+                                <Text style={ styles.dateText } >{ item.dateSent }</Text>
                             </View>
                         );
                     } } />

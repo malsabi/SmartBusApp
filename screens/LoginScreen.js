@@ -1,6 +1,6 @@
 import { Theme } from '../Theme';
 import { React, useContext, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { registerIndieID } from 'native-notify';
 import { APP_ID, APP_TOKEN } from '../consts/AppConsts';
 import { Image, Input, Button, CheckBox, Text, ThemeProvider } from 'react-native-elements';
@@ -56,40 +56,46 @@ export default function LoginScreen()
     };
 
     return (
-        <ThemeProvider theme={ Theme }>
-            <View style={ styles.container }>
-                <Text style={ Theme.LoginHeader.textStyle }>Smart Bus Parent Portal</Text>
-                <Image style={ Theme.Image.imageStyle } source={ require('../assets/Bus.png') } />
-                <Text h3 style={ styles.title }>LOGIN</Text>
-                <Input
-                    placeholder='Email'
-                    value={ email }
-                    onChangeText={ setEmail }
-                />
-                <Input
-                    placeholder='Password'
-                    secureTextEntry
-                    value={ password }
-                    onChangeText={ setPassword }
-                />
-                <CheckBox
-                    title='Stay Signed In'
-                    checked={ staySignedIn }
-                    onPress={ () => setStaySignedIn(!staySignedIn) }
-                />
-                <Button
-                    title='LOGIN'
-                    onPress={ handleLogin }
-                    loading={ loginLoading }
-                    containerStyle={ Theme.Button.containerViewStyle }
-                />
-                { loginError ? (<Text style={ Theme.Text.errorStyle }>{ loginError }</Text>) : null }
-            </View>
-        </ThemeProvider>
+        <KeyboardAvoidingView style={ styles.login } behavior="padding">
+            <ThemeProvider theme={ Theme }>
+                <View style={ styles.container }>
+                    <Text style={ Theme.LoginHeader.textStyle }>Smart Bus Parent Portal</Text>
+                    <Image style={ Theme.Image.imageStyle } source={ require('../assets/Bus.png') } />
+                    <Text h3 style={ styles.title }>LOGIN</Text>
+                    <Input
+                        placeholder='Email'
+                        value={ email }
+                        onChangeText={ setEmail }
+                    />
+                    <Input
+                        placeholder='Password'
+                        secureTextEntry
+                        value={ password }
+                        onChangeText={ setPassword }
+                    />
+                    <CheckBox
+                        title='Stay Signed In'
+                        checked={ staySignedIn }
+                        onPress={ () => setStaySignedIn(!staySignedIn) }
+                    />
+                    <Button
+                        title='LOGIN'
+                        onPress={ handleLogin }
+                        loading={ loginLoading }
+                        containerStyle={ Theme.Button.containerViewStyle }
+                    />
+                    { loginError ? (<Text style={ Theme.Text.errorStyle }>{ loginError }</Text>) : null }
+                </View>
+            </ThemeProvider>
+        </KeyboardAvoidingView>
     );
 };
 
 const styles = StyleSheet.create({
+    login: {
+        flex: 1,
+        justifyContent: "center"
+      },
     container: {
         flex: 1,
         alignItems: 'center',

@@ -13,7 +13,6 @@ class HttpClientService
         {
             const headers = new Headers();
             headers.append('Accept', 'application/json');
-            headers.append('Content-Type', 'application/json');
             if (token)
             {
                 headers.append('Authorization', `${SCHEME} ${token}`);
@@ -23,13 +22,12 @@ class HttpClientService
                     method: 'GET',
                     headers
                 });
-            const data = await response.json();
-            console.log(data);
+            const responseData = await response.json();
             if (response.ok)
             {
-                return new HttpResponseModel(true, data, null);
+                return new HttpResponseModel(true, responseData, null);
             }
-            return new HttpResponseModel(false, null, data);
+            return new HttpResponseModel(false, null, responseData);
         }
         catch (error)
         {
