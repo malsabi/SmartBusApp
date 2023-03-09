@@ -7,6 +7,7 @@ import LoadingComponent from '../components/LoadingComponent';
 import { AuthContext } from '../context/AuthContext';
 import registerNNPushToken from 'native-notify';
 import { APP_ID, APP_TOKEN } from '../consts/AppConsts';
+import { Block } from '../components';
 
 export default function AppNav()
 {
@@ -24,7 +25,9 @@ export default function AppNav()
 
     return (
         <NavigationContainer>
-            { userToken != null ? <AppStack /> : <AuthStack /> }
+            <Block white>
+                { userToken != null ? <AppStack /> : <AuthStack /> }
+            </Block>
         </NavigationContainer>
     );
 };

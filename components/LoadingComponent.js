@@ -1,10 +1,10 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
-import { Theme } from '../Theme';
+import { colors } from '../Theme';
 
 const LoadingComponent = () => {
     return (
-        <ActivityIndicator size="large" color={Theme.colors.primary} />
+        <ActivityIndicator size="large" color={colors.primary} />
     );
 };
 

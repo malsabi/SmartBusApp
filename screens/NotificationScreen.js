@@ -1,10 +1,8 @@
-import { FlatList } from 'react-native';
 import { React, useState, useEffect, useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { FlatList, View, Text, StyleSheet } from 'react-native';
 import { APP_ID, APP_TOKEN } from '../consts/AppConsts';
 import { AuthContext } from '../context/AuthContext';
 import { getIndieNotificationInbox, deleteIndieNotificationInbox } from 'native-notify';
-import { TouchableOpacity } from 'react-native-web';
 
 export default function NotificationScreen()
 {

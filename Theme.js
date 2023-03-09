@@ -1,99 +1,53 @@
-import { colors } from 'react-native-elements';
+const colors = {
+    accent: "#F3534A",
+    primary: "#0AC4BA",
+    secondary: "#2BDA8E",
+    tertiary: "#FFE358",
+    black: "#323643",
+    white: "#FFFFFF",
+    gray: "#9DA3B4",
+    gray2: "#C5CCD6"
+};
 
-export const Theme = {
-    colors: {
-        primary: '#008080',
-        secondary: '#FFA500',
-        grey0: '#f5f5f5',
-        grey1: '#dcdcdc',
-        grey2: '#919191',
-        grey3: '#212121',
-        grey4: '#424242',
-        grey5: '#616161',
-        greyOutline: '#bfbfbf',
-        success: '#4CAF50',
-        error: '#FF5252',
-        warning: '#FFC107',
-        divider: colors.grey3,
+const sizes = {
+    // global sizes
+    base: 16,
+    font: 14,
+    radius: 6,
+    padding: 25,
+
+    // font sizes
+    h1: 26,
+    h2: 20,
+    h3: 18,
+    title: 18,
+    header: 16,
+    body: 14,
+    caption: 12
+};
+
+const fonts = {
+    h1: {
+        fontSize: sizes.h1
     },
-    Button: {
-        titleStyle: {
-            color: '#ffffff',
-        },
-        buttonStyle: {
-            marginTop: 20,
-        },
-        containerViewStyle: {
-            width: '100%'
-        }
+    h2: {
+        fontSize: sizes.h2
     },
-    Input: {
-        placeholderTextColor: '#bfbfbf',
-        inputStyle: {
-            color: '#212121',
-        },
-        inputContainerStyle: {
-            borderBottomColor: '#bfbfbf',
-        },
+    h3: {
+        fontSize: sizes.h3
     },
-    CheckBox: {
-        checkedColor: '#008080',
-        containerStyle: {
-            backgroundColor: '#ffffff',
-            borderWidth: 0,
-        },
-        textStyle: {
-            color: '#212121',
-        },
+    header: {
+        fontSize: sizes.header
     },
-    Text: {
-        h3Style: {
-            color: '#008080',
-        },
-        errorStyle: {
-            backgroundColor: 'red',
-            color: 'white',
-            padding: 10,
-            marginTop: 10,
-        },
+    title: {
+        fontSize: sizes.title
     },
-    Header: {
-        backgroundColor: '#fff',
-        borderBottomColor: '#dcdcdc',
-        borderBottomWidth: 1,
+    body: {
+        fontSize: sizes.body
     },
-    Icon: {
-        color: '#008080',
-    },
-    ListItem: {
-        containerStyle: {
-            borderBottomColor: '#dcdcdc',
-            borderBottomWidth: 1,
-        },
-        titleStyle: {
-            color: '#212121',
-        },
-        subtitleStyle: {
-            color: '#616161',
-        },
-        chevronColor: '#dcdcdc',
-    },
-    Image: {
-        imageStyle: {
-            width: 200,
-            height: 200,
-            marginBottom: 20,
-            alignSelf: 'center',
-        }
-    },
-    LoginHeader: {
-        backgroundColor: '#008080',
-        height: 50,
-        textStyle: {
-            color: '#616161',
-            fontSize: 30,
-            fontWeight: 'bold',
-            marginBottom: 30,
-        }
+    caption: {
+        fontSize: sizes.caption
     }
 };
+
+export { colors, sizes, fonts };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Block } from './components';
 import { AuthProvider } from './context/AuthContext';
 import AppNav from './navigation/AppNav';
 

@@ -2,18 +2,18 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from '../HomeScreen';
 import LiveMapScreen from '../LiveMapScreen';
-import DrawerComponent from '../../components/DrawerComponent';
 import NotificationScreen from '../NotificationScreen';
+import CustomDrawer from '../../navigation/CustomDrawer';
 
-const Drawer = createDrawerNavigator();
+const MainDrawer = createDrawerNavigator();
 
 export default function AppStack()
 {
     return (
-        <Drawer.Navigator drawerContent={ (props) => <DrawerComponent { ...props } /> } >
-            <Drawer.Screen name="Home" component={ HomeScreen } />
-            <Drawer.Screen name="Notification" component={ NotificationScreen } />
-            <Drawer.Screen name="LiveMap" component={ LiveMapScreen } />
-        </Drawer.Navigator>
+        <MainDrawer.Navigator drawerContent={ (props) => <CustomDrawer { ...props } /> } >
+            <MainDrawer.Screen name="Home" component={ HomeScreen } />
+            <MainDrawer.Screen name="Notification" component={ NotificationScreen } />
+            <MainDrawer.Screen name="LiveMap" component={ LiveMapScreen } />
+        </MainDrawer.Navigator>
     );
 }

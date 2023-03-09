@@ -1,13 +1,11 @@
 import { React, useEffect } from 'react';
-import { Theme } from '../Theme';
-import { Text } from 'react-native-elements';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { colors } from '../Theme';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 
-const HomeScreen = () => 
+const HomeScreen = () =>
 {
     useEffect(() => 
     {
-        
     });
 
     return (
@@ -81,7 +79,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     actionButton: {
-        backgroundColor: Theme.colors.primary,
+        backgroundColor: colors.primary,
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
@@ -94,7 +92,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
     },
     safetyTipsContainer: {
-        backgroundColor: Theme.colors.greyOutline,
+        backgroundColor: colors.gray,
         paddingHorizontal: 20,
         paddingVertical: 15,
         marginTop: 0,

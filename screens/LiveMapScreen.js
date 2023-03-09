@@ -64,9 +64,7 @@ export default function LiveMapScreen()
                         latitudeDelta: 0.01,
                         longitudeDelta: 0.01,
                     } }>
-                    <Marker
-                        coordinate={ { latitude: data.latitude, longitude: data.longitude } }
-                    />
+                    <Marker coordinate={ { latitude: data.latitude, longitude: data.longitude } } />
                 </MapView>
             ) }
         </View>
