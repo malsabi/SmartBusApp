@@ -1,5 +1,7 @@
 import { React, useState, useEffect, useContext } from 'react';
-import { FlatList, View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
+import { colors, sizes } from '../Theme';
+import { Text, Block } from '../components';
 import { APP_ID, APP_TOKEN } from '../consts/AppConsts';
 import { AuthContext } from '../context/AuthContext';
 import { getIndieNotificationInbox, deleteIndieNotificationInbox } from 'native-notify';
@@ -8,74 +10,76 @@ export default function NotificationScreen()
 {
     const { getParent } = useContext(AuthContext);
     const [data, setData] = useState([]);
+    const [refreshing, setRefreshing] = useState(false);
 
-    useEffect(() => 
+    async function fetchData() 
     {
-        async function fetchData() 
-        {
-            const parent = await getParent();
-            console.log('ParentID: ', parent.ID.toString());
-            let notifications = await getIndieNotificationInbox(parent.ID.toString(), APP_ID, APP_TOKEN);
-            console.log("notifications: ", notifications);
-            setData(notifications);
-        }
+        setRefreshing(true);
+        const parent = await getParent();
+        let notifications = await getIndieNotificationInbox(parent.ID.toString(), APP_ID, APP_TOKEN);
+        setData(notifications);
+        setRefreshing(false);
+    }
+
+    async function handleDeleteNotification(notificationId) 
+    {
+        setRefreshing(true);
+        const parent = await getParent();
+        let notifications = await deleteIndieNotificationInbox(parent.ID.toString(), notificationId, APP_ID, APP_TOKEN);
+        setData(notifications);
+        setRefreshing(false);
+    };
+
+    useEffect(() =>
+    {
         fetchData();
     }, []);
 
-    return (
-        <View style={ styles.screen }>
-            <View style={ styles.body }>
-                <FlatList data={ data }
-                    keyExtractor={ item => item.notification_id }
-                    renderItem={ ({ item }) =>
-                    {
-                        return (
-                            <View style={ styles.noteCont }>
-                                <Text style={ styles.title }>{ item.title }</Text>
-                                <Text style={ styles.messageText }>{ item.message }</Text>
-                                <Text style={ styles.dateText } >{ item.dateSent }</Text>
-                            </View>
-                        );
-                    } } />
+    const renderNotificationItem = ({ item }) => (
+        <Block row flex={1} style={styles.mainBlockStyle}>
+            <Block flex={-1} padding={sizes.base}>
+                <Image source={ require('../assets/icons/newMessage.png') } style={ styles.imageStyle } />
+            </Block>
+            <Block column middle flex={1}>
+                <Text title bold>{item.title}</Text>
+                <Text h3>{item.message}</Text>
+            </Block>
+            <Block column middle flex={-1}>
+                <TouchableOpacity onPress={ () => handleDeleteNotification(item.notification_id) }>
+                    <Image source={ require('../assets/icons/deleteMessage.png') } style={ styles.deleteIconStyle } />
+                </TouchableOpacity>
+            </Block>
+        </Block>
+    );
 
-            </View>
-        </View>
+    return (
+        <FlatList
+            data={ data }
+            renderItem={ renderNotificationItem }
+            keyExtractor={ (item) => item.notification_id }
+            refreshing={ refreshing }
+            onRefresh={ fetchData }
+            contentContainerStyle={styles.contentContainer}
+        />
     );
 };
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f4f4f4'
+    contentContainer: {
+        flexGrow: 1,
     },
-    body: {
-        flex: 8,
-        width: '100%',
+    mainBlockStyle: {
+        borderBottomWidth: 1,
+        borderBottomColor: colors.gray2
     },
-
-    noteCont: {
-        width: '100%',
-        padding: 15,
-        backgroundColor: '#fff',
-        borderWidth: 0.75,
-        barderColor: '#d8d8d8'
+    imageStyle:
+    {
+        width: 32,
+        height: 32
     },
-    title: {
-        width: '90%',
-        marginBottom: 5,
-        fontSize: 14,
-    },
-    messageText: {
-        marginTop: 2,
-        fontSize: 14,
-        marginTop: 5
-    },
-    dateText: {
-        marginTop: 2,
-        fontSize: 14,
-        marginTop: 5,
-        textAlign: 'right',
+    deleteIconStyle:
+    {
+        width: 32,
+        height: 32
     }
 });
