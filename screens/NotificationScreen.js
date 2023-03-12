@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useContext } from 'react';
-import { StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, FlatList, TouchableOpacity, View } from 'react-native';
 import { colors, sizes } from '../Theme';
 import { Text, Block } from '../components';
 import { APP_ID, APP_TOKEN } from '../consts/AppConsts';
@@ -36,15 +36,15 @@ export default function NotificationScreen()
     }, []);
 
     const renderNotificationItem = ({ item }) => (
-        <Block row flex={1} style={styles.mainBlockStyle}>
-            <Block flex={-1} padding={sizes.base}>
+        <Block row flex={ 1 } style={ styles.mainBlockStyle }>
+            <Block flex={ -1 } padding={ sizes.base }>
                 <Image source={ require('../assets/icons/newMessage.png') } style={ styles.imageStyle } />
             </Block>
-            <Block column middle flex={1}>
-                <Text title bold>{item.title}</Text>
-                <Text h3>{item.message}</Text>
+            <Block column middle flex={ 1 }>
+                <Text title bold>{ item.title }</Text>
+                <Text h3>{ item.message }</Text>
             </Block>
-            <Block column middle flex={-1}>
+            <Block column middle flex={ -1 }>
                 <TouchableOpacity onPress={ () => handleDeleteNotification(item.notification_id) }>
                     <Image source={ require('../assets/icons/deleteMessage.png') } style={ styles.deleteIconStyle } />
                 </TouchableOpacity>
@@ -53,14 +53,15 @@ export default function NotificationScreen()
     );
 
     return (
-        <FlatList
-            data={ data }
-            renderItem={ renderNotificationItem }
-            keyExtractor={ (item) => item.notification_id }
-            refreshing={ refreshing }
-            onRefresh={ fetchData }
-            contentContainerStyle={styles.contentContainer}
-        />
+        <View stlye={ styles.contentContainer }>
+            <FlatList
+                data={ data }
+                renderItem={ renderNotificationItem }
+                keyExtractor={ (item) => item.notification_id }
+                refreshing={ refreshing }
+                onRefresh={ fetchData }
+            />
+        </View>
     );
 };
 

@@ -56,7 +56,7 @@ const CustomDrawer = (props) =>
                             </Text>
                         </Block>
                     </Button>
-                    <Button color={ colors.secondary } style={ { borderRadius: 15 } } onPress={ async () => await logout() }>
+                    <Button color={ colors.secondary } style={ { borderRadius: 15 } } onPress={ () => props.navigation.navigate('Sibling') }>
                         <Block row center padding={ [0, sizes.base] }>
                             <Image source={ require('../assets/icons/siblingScreen.png') } style={ { width: 30, height: 30, marginRight: 10 } } />
                             <Text white title bold>
@@ -64,7 +64,7 @@ const CustomDrawer = (props) =>
                             </Text>
                         </Block>
                     </Button>
-                    <Button color={ colors.secondary } style={ { borderRadius: 15 } } onPress={ async () => await logout() }>
+                    <Button color={ colors.secondary } style={ { borderRadius: 15 } } onPress={ () => props.navigation.navigate('Contact') }>
                         <Block row center padding={ [0, sizes.base] }>
                             <Image source={ require('../assets/icons/contactScreen.png') } style={ { width: 30, height: 30, marginRight: 10 } } />
                             <Text white title bold>
