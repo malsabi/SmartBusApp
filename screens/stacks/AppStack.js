@@ -12,7 +12,7 @@ const MainDrawer = createDrawerNavigator();
 export default function AppStack()
 {
     return (
-        <MainDrawer.Navigator drawerContent={ (props) => <CustomDrawer { ...props } /> } >
+        <MainDrawer.Navigator drawerContent={ (props) => <CustomDrawer { ...props } /> }>
             <MainDrawer.Screen name="Home" component={ HomeScreen } />
             <MainDrawer.Screen name="Notification" component={ NotificationScreen } />
             <MainDrawer.Screen name="LiveMap" component={ LiveMapScreen } />

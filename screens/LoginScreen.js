@@ -3,7 +3,7 @@ import { APP_ID, APP_TOKEN } from '../consts/AppConsts';
 import AuthService from '../services/AuthService';
 import LoginParentResponseDto from '../DTOs/Auth/LoginParentResponseDto';
 import { AuthContext } from '../context/AuthContext';
-import React, { Component, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { ActivityIndicator, Keyboard, KeyboardAvoidingView, StyleSheet, Image } from "react-native";
 import { Button, Block, Input, Text } from "../components";
 import { colors, sizes } from "../Theme";
@@ -54,16 +54,16 @@ export default function LoginScreen()
 
     return (
         <KeyboardAvoidingView style={ styles.login } behavior="padding">
-            <Block padding={ [sizes.base * 3, sizes.base * 2] }>
+            <Block padding={ [sizes.base * 4, sizes.base * 2] }>
                 <Text h1 bold>
-                    Parent Login
+                    Login
                 </Text>
                 <Block center middle>
                     <Image source={ require("../assets/icons/login.png") } resizeMode='center' style={ { width: '100%', height: '100%' } } />
                 </Block>
                 <Block middle color={ colors.accewhitent }>
                     <Input
-                        label="Email"
+                        label="Email Address"
                         error={ hasErrors("email") }
                         style={ [styles.input, hasErrors("email")] }
                         defaultValue={ email }
@@ -78,11 +78,11 @@ export default function LoginScreen()
                         onChangeText={ text => setPassword(text) } />
 
                     <Button gradient onPress={ () => handleLogin() }>
-                        { loginLoading ? (<ActivityIndicator size="small" color="white" />) : (<Text bold white center> Login </Text>) }
+                        { loginLoading ? (<ActivityIndicator size="small" color="white" />) : (<Text bold white center> LOGIN </Text>) }
                     </Button>
 
                     <Button>
-                        <Text gray caption center style={ { textDecorationLine: "underline" } }>
+                        <Text black caption center style={ { textDecorationLine: "underline" } }>
                             Forgot your password?
                         </Text>
                     </Button>
@@ -95,13 +95,13 @@ export default function LoginScreen()
 const styles = StyleSheet.create({
     login: {
         flex: 1,
-        justifyContent: "center"
+        justifyContent: "center",
+        flexBasis: 100,
     },
     input: {
-        borderRadius: 0,
         borderWidth: 0,
         borderBottomColor: colors.gray,
-        borderBottomWidth: 1.5
+        borderBottomWidth: 2,
     },
     hasErrors: {
         borderBottomColor: colors.accent

@@ -67,24 +67,24 @@ export default function LiveMapScreen()
     return (
         <Block flex={ 1 }>
             { data == null ?
-                (<Block column color={ colors.black } padding={ sizes.base, sizes.base}>
-                    <Block column flex={-1} color={colors.tertiary } padding={ sizes.base } style={{ borderRadius: 15}}>
-                        <Text h1 bold color={colors.black } style={{textDecorationLine: 'underline'}}>Warning</Text>
-                        <Text h1 height={ 35 } color={colors.black }>
+                (<Block column color={ colors.white } padding={ [sizes.base, sizes.base] }>
+                    <Block column flex={-1} color={colors.lightOrange } padding={ sizes.base } style={{ borderRadius: 15}}>
+                        <Text h1 bold color={colors.darkGray } style={{textDecorationLine: 'underline'}}>Notice</Text>
+                        <Text h1 height={ 35 } color={colors.darkGray }>
                             No children on board the bus. If you have any questions
                             or concerns, please contact our customer service team by
                             visiting our "Contact Us" page. Thank you.
                         </Text>
                     </Block>
 
-                    <Block column flex={1} color={colors.white } padding={ sizes.base } marginTop={20} marginBottom={20} style={{ borderRadius: 15}} >
-                        <Text h1 bold color={colors.black } style={{textDecorationLine: 'underline'}}>FAQS</Text>
+                    <Block column flex={1} color={colors.lightGray } padding={ sizes.base } marginTop={20} marginBottom={20} style={{ borderRadius: 15}} >
+                        <Text h1 bold color={colors.darkGray } style={{textDecorationLine: 'underline'}}>FAQS</Text>
                         <FlatList
                             data={ faqs }
                             renderItem={ ({ item }) => (
                                 <TouchableOpacity onPress={ () => Linking.openURL(item.url) }>
-                                    <Block style={styles.mainBlockStyle} paddingLeft={ sizes.base } paddingTop={ sizes.base * 2}>
-                                        <Text h2 color={'#000099'}>{ item.question }</Text>
+                                    <Block style={styles.mainBlockStyle} paddingLeft={ sizes.base } paddingTop={ sizes.base * 2} paddingBottom={5}>
+                                        <Text h2 color={'#0077CC'}>{ item.question }</Text>
                                     </Block>
                                 </TouchableOpacity>
                             ) }
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     },
     mainBlockStyle: {
         borderBottomWidth: 1,
-        borderBottomColor: colors.gray2
+        borderBottomColor: colors.black
     },
     map: {
         width: '100%',

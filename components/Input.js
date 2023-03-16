@@ -45,7 +45,7 @@ export default class Input extends Component
                 ) : (
                     <Icon.Ionicons
                         color={ colors.gray }
-                        size={ sizes.font * 1.35 }
+                        size={ sizes.font * 2 }
                         name={ !toggleSecure ? "md-eye" : "md-eye-off" }
                     />
                 ) }

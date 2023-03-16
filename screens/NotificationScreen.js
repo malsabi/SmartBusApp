@@ -35,22 +35,25 @@ export default function NotificationScreen()
         fetchData();
     }, []);
 
-    const renderNotificationItem = ({ item }) => (
-        <Block row flex={ 1 } style={ styles.mainBlockStyle }>
-            <Block flex={ -1 } padding={ sizes.base }>
-                <Image source={ require('../assets/icons/newMessage.png') } style={ styles.imageStyle } />
+    function renderNotificationItem({ item }) 
+    {
+        return (
+            <Block row flex={ 1 } style={ styles.mainBlockStyle }>
+                <Block flex={ -1 } padding={ sizes.base }>
+                    <Image source={ require('../assets/icons/newMessage.png') } style={ styles.imageStyle } />
+                </Block>
+                <Block column middle flex={ 1 }>
+                    <Text title bold>{ item.title }</Text>
+                    <Text h3>{ item.message }</Text>
+                </Block>
+                <Block column middle flex={ -1 }>
+                    <TouchableOpacity onPress={ () => handleDeleteNotification(item.notification_id) }>
+                        <Image source={ require('../assets/icons/deleteMessage.png') } style={ styles.deleteIconStyle } />
+                    </TouchableOpacity>
+                </Block>
             </Block>
-            <Block column middle flex={ 1 }>
-                <Text title bold>{ item.title }</Text>
-                <Text h3>{ item.message }</Text>
-            </Block>
-            <Block column middle flex={ -1 }>
-                <TouchableOpacity onPress={ () => handleDeleteNotification(item.notification_id) }>
-                    <Image source={ require('../assets/icons/deleteMessage.png') } style={ styles.deleteIconStyle } />
-                </TouchableOpacity>
-            </Block>
-        </Block>
-    );
+        );
+    }
 
     return (
         <View stlye={ styles.contentContainer }>
@@ -60,6 +63,7 @@ export default function NotificationScreen()
                 keyExtractor={ (item) => item.notification_id }
                 refreshing={ refreshing }
                 onRefresh={ fetchData }
+                style={ { backgroundColor: colors.white } }
             />
         </View>
     );

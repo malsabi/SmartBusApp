@@ -25,7 +25,7 @@ const CustomDrawer = (props) =>
         fetchData();
     }, []);
     return (
-        <Block flex={ 1 } padding={ [sizes.base * 3, sizes.base] } flex={ 1 }>
+        <Block flex={ 1 } padding={ [sizes.base * 3, sizes.base] }>
             <Block center flex={ -1 } color={ colors.white }>
                 <Image source={ require("../assets/icons/userDefault.png") } resizeMode='stretch' style={ { width: 100, height: 100 } } />
                 { parentInfo && <Text h1 bold>{ parentInfo.FirstName + ' ' + parentInfo.LastName }</Text> }
