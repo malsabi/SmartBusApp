@@ -63,7 +63,7 @@ export default function NotificationScreen()
                 keyExtractor={ (item) => item.notification_id }
                 refreshing={ refreshing }
                 onRefresh={ fetchData }
-                style={ { backgroundColor: colors.white } }
+                style={ styles.flatListStyle }
             />
         </View>
     );
@@ -71,7 +71,14 @@ export default function NotificationScreen()
 
 const styles = StyleSheet.create({
     contentContainer: {
+        flex: 1,
         flexGrow: 1,
+        backgroundColor: colors.white,
+    },
+    flatListStyle: {
+        backgroundColor: colors.white,
+        width: '100%',
+        height: '100%',
     },
     mainBlockStyle: {
         borderBottomWidth: 1,
